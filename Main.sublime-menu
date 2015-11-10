@@ -1,0 +1,14 @@
+[
+    {
+
+        "id": "tools",
+        "children":
+        [
+            {
+                "id": "Dedebug",
+                "caption": "Dedebug This File",
+                "command": "dedebug"
+            }
+        ]
+    }
+]
