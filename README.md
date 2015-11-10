@@ -7,7 +7,14 @@ a `pdb` call in a commit? Despair no longer!
 Removes any instance of `import pdb`, `pdb.set_trace()`, 
 `import pdb; pdb.set_trace()` or `browser()` from a source file.
 
+# Installation (with Package Control)
+1. Add `https://github.com/DexGroves/SublimeDedebug` as a repository. 
+(ctrl+shift+p, 'add respository')
+2. Install SublimeDedebug (ctrl+shift+p, 'install package', 'sublimededebug')
+
 # Shortcut
+Tools > Dedebug This File
+
 ctrl+alt+e.
 
 # Roadmap
