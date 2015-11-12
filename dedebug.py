@@ -5,8 +5,11 @@ import sublime_plugin
 class DedebugCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
-        self.debugger_commands = ['import pdb; pdb.set_trace()', 'import pdb',
-                                  'pdb.set_trace()', 'browser()']
+        self.debugger_commands = ['import pdb; pdb.set_trace()',
+                                  'import pdb',
+                                  'import pdb;',
+                                  'pdb.set_trace()',
+                                  'browser()']
 
         all_content = sublime.Region(0, self.view.size())
         line_regions = self.view.split_by_newlines(all_content)
@@ -22,7 +25,7 @@ class DedebugCommand(sublime_plugin.TextCommand):
                 self.view.replace(edit, line_region, stripped_line)
 
                 (line_row, line_col) = self.view.rowcol(line_region.a)
-                modified_lines.append(str(line_row))
+                modified_lines.append(line_row)
 
         self.send_status_message(modified_lines)
 
@@ -47,6 +50,8 @@ class DedebugCommand(sublime_plugin.TextCommand):
     @staticmethod
     def send_status_message(modified_lines):
         modified_lines.sort()
+        modified_lines = [str(line_num) for line_num in modified_lines]
+
         if len(modified_lines) == 0:
             msg = 'No debugger commands found!'
         if len(modified_lines) == 1:
